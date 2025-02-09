@@ -55,11 +55,6 @@ const vehicles = [
     }
 ];
 
-document.addEventListener('DOMContentLoaded', () => {
-    renderVehicles();
-    setupEventListeners();
-});
-
 async function loadVehicles() {
     try {
         const response = await fetch('api/get_vehicles.php');
@@ -153,7 +148,7 @@ function updateVehicleAvailability(availableVehicles) {
 
     markers.forEach(marker => {
         const vehicleId = marker.vehicleId;
-        if (availableIds.includes(vehicle_id)) {
+        if (availableIds.includes(vehicleId)) {
             marker.marker.setIcon({
                 path: google.maps.SymbolPath.CIRCLE,
                 scale: 8,
@@ -234,7 +229,7 @@ function unhighlightMarker(vehicleId) {
 function centerMapOnVehicle(vehicleId) {
     const vehicle = vehicles.find(vehicle => vehicle.id === vehicleId);
     const location = locations[vehicle.location];
-    if(position) {
+    if(location) {
         map.setCenter(location);
         map.setZoom(16);
     }
@@ -286,8 +281,8 @@ function filterVehicles() {
         if(isVisible && searchPrompt && vehicle.location.toLowerCase().includes(searchPrompt)) {
             const position = locations[vehicle.location];
             if(position) {
-                marker.setPosition(position);
-                marker.setZoom(14);
+                map.setPosition(position);
+                map.setZoom(14);
             }
         }
     });
@@ -580,7 +575,7 @@ function findNearestVehicles() {
 }
 
 async function refreshMapData() {
-    const refreshButton = document.querySelector('.custom-map-control=button');
+    const refreshButton = document.querySelector('.custom-map-control-button');
     refreshButton.classList.add('fa-spin');
 
     try {
