@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            line-height: 1.6; 
+            margin: 0;
+            padding: 0;
+        }
+        .container { 
+            max-width: 600px; 
+            margin: 0 auto; 
+            padding: 20px; 
+        }
+        .header { 
+            background: #2c3e50; 
+            color: white; 
+            padding: 20px; 
+            text-align: center; 
+        }
+        .payment-details { 
+            background: #f8f9fa; 
+            padding: 20px; 
+            margin: 20px 0; 
+            border-radius: 5px;
+        }
+        .footer { 
+            text-align: center; 
+            margin-top: 20px; 
+            color: #666; 
+            padding: 20px;
+            background: #f8f9fa;
+        }
+        .detail-row {
+            margin: 10px 0;
+        }
+        .detail-row strong {
+            color: #2c3e50;
+        }
+        .success-message {
+            color: #2ecc71;
+            text-align: center;
+            font-size: 1.2em;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class='container'>
+        <div class='header'>
+            <h2>Payment Confirmation</h2>
+        </div>
+        
+        <p>Dear {{full_name}},</p>
+        
+        <div class='success-message'>
+            Your payment has been successfully processed!
+        </div>
+        
+        <div class='payment-details'>
+            <div class='detail-row'>
+                <strong>Vehicle:</strong> {{model}}
+            </div>
+            <div class='detail-row'>
+                <strong>Amount Paid:</strong> RM{{total_cost}}
+            </div>
+            <div class='detail-row'>
+                <strong>Payment Reference:</strong> {{transaction_id}}
+            </div>
+            <div class='detail-row'>
+                <strong>Booking Reference:</strong> {{booking_id}}
+            </div>
+        </div>
+        
+        <p>For any payment-related queries, please contact our support team at support@socar.com</p>
+        
+        <div class='footer'>
+            <p>Thank you for choosing SOCAR!</p>
+        </div>
+    </div>
+</body>
+</html>

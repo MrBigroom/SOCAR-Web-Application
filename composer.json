@@ -1,0 +1,14 @@
+{
+    "name": "chany/socarwebapplication",
+    "type": "project",
+    "authors": [
+        {
+            "name": "MrBigroom",
+            "email": "blabob9@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "stripe/stripe-php": "*"
+    }
+}
